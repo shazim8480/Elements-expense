@@ -8,6 +8,7 @@ import ManageExpense from './screens/ManageExpense';
 import RecentExpenses from './screens/RecentExpenses';
 
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+// navigation imports //
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -15,11 +16,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 
+// bottom tab navigator container function//
 function ExpenseOverview() {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="RecentExpenses" component={RecentExpenses} />
-      <BottomTab.Screen name="AllExpenses" component={AllExpenses} />
+      <BottomTab.Screen name="Recent Expenses" component={RecentExpenses} />
+      <BottomTab.Screen name="All Expenses" component={AllExpenses} />
     </BottomTab.Navigator>
   );
 }
@@ -27,20 +29,18 @@ function ExpenseOverview() {
 const App = () => {
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
-        <StatusBar />
-        {/* <ScrollView contentInsetAdjustmentBehavior="automatic">
-          <Header />
-        </ScrollView> */}
-        <NavigationContainer>
-          <Stack.Navigator>
-            {/* expense overview component will load as default */}
-            <Stack.Screen name="ExpenseOverview" component={ExpenseOverview} />
-            {/* manage expense component is kept different from the other expense comps */}
-            <Stack.Screen name="ManageExpense" component={ManageExpense} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaView>
+      <StatusBar />
+      <NavigationContainer>
+        {/* <SafeAreaView> */}
+        {/* <ScrollView contentInsetAdjustmentBehavior="automatic"> */}
+        {/* <Header /> */}
+        <Stack.Navigator>
+          <Stack.Screen name="ExpenseOverview" component={ExpenseOverview} />
+          <Stack.Screen name="ManageExpense" component={ManageExpense} />
+        </Stack.Navigator>
+        {/* </ScrollView> */}
+        {/* </SafeAreaView> */}
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 };
